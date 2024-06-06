@@ -9,10 +9,12 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 export default function Login() {
   return (
+    <div className="flex flex-col items-center justify-center h-screen">
     <Auth
       supabaseClient={supabase}
       appearance={{ theme: ThemeSupa }}
       providers={['google', 'facebook', 'twitter']}
     />
+    </div>
   );
 }
