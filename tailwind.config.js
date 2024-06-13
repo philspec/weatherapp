@@ -17,6 +17,9 @@ module.exports = {
       },
     },
     extend: {
+      gridTemplateRows: {
+        '12same': 'repeat(12, 8.3333vh)'
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
