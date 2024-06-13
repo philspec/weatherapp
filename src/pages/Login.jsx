@@ -42,11 +42,9 @@ export default function Login() {
         }});
     
     async function onGoogleSignIn(){
-      console.log("ok")
       const response = await supabase.auth.signInWithOAuth({
           provider: 'google',
         })
-      console.log(response)
     }
     
     async function onSubmit (formdata,event) {
