@@ -42,9 +42,10 @@ export default function Login() {
         }});
     
     async function onGoogleSignIn(){
-      const response = await supabase.auth.signInWithOAuth({
+      await supabase.auth.signInWithOAuth({
           provider: 'google',
         })
+        navigate("/")
     }
     
     async function onSubmit (formdata,event) {
