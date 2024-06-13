@@ -38,7 +38,7 @@ export default function Login() {
         resolver: zodResolver(formSchema),
         defaultValues: {
           email:"qwertysonata@gmail.com",
-          password:"qazxswedc"
+          password:"12345678"
         }});
     
     async function onGoogleSignIn(){
