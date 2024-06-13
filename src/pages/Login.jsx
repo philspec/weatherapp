@@ -45,7 +45,7 @@ export default function Login() {
       await supabase.auth.signInWithOAuth({
           provider: 'google',
         })
-        navigate("/")
+        //navigate("/")
     }
     
     async function onSubmit (formdata,event) {
@@ -54,27 +54,27 @@ export default function Login() {
           email: formdata.email,
           password: formdata.password
         });
-        if (response.error) {
+        /*if (response.error) {
           setisSignIn(false)
           setError(response.error.message)
         }
         else{
           dispatch(setAuth(true))
           navigate("/")
-        }
+        }*/
       } else if (event.nativeEvent.submitter.name === 'signup') {
         const response = await supabase.auth.signUp({
           email: formdata.email,
           password: formdata.password
         })
-        if (response.error) {
+        /*if (response.error) {
           setisSignIn(false)
           setError(response.error.message)
         }
         else{
           dispatch(setAuth(true))
           navigate("/")
-      }}}
+      }*/}}
      
 
     return (
