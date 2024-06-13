@@ -11,7 +11,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<ProtectedHome component={<Home />} />} />
         <Route path="/termsandconditions" element={<TermsandConditions />} />
         <Route path="/privacypolicy" element={<PrivacyPolicy />} />
         <Route path="*" element={<NotFound />} />

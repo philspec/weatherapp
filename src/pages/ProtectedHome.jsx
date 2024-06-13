@@ -1,16 +1,31 @@
 import { Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import  supabase  from './supabaseclient.js';
+import { useState, useEffect } from 'react';
 
 const ProtectedHome = ({ component: Component }) => {
-  const {auth} = useSelector((state) => state.auth);
+  const [session, setSession] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  if (!auth) {
-    return <Navigate to="/login" />;
+  useEffect(() => {
+    const getSession = async () => {
+      const response = await supabase.auth.getSession();
+      setSession(response.data.session); // Ensure correct session data handling
+      setLoading(false); // Set loading to false once session is fetched
+    };
+    
+    getSession();
+  }, []);
+
+  if (loading) {
+    return <div className='place-self-center'>Loading...</div>; // Optionally add a loading state while fetching session
   }
-  else{
-    return <Component />
-  }
-  ;
+
+  return (
+    <>
+      {!session ? <Navigate to="/login" /> : Component}
+    </>
+  );
 };
 
 export default ProtectedHome;
+

@@ -1,4 +1,3 @@
-import { createClient } from '@supabase/supabase-js';
 import logo from '../assets/logo.jpg';
 import ExportGoogleLogo from '../assets/googleicon.jsx'
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -8,8 +7,8 @@ import { Input } from "@/components/ui/input"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { useDispatch } from "react-redux"
-import { setAuth } from '@/features/auth/auth';
 import { useNavigate } from 'react-router-dom';
+import supabase from './supabaseclient.js';
 import {
   Form,
   FormControl,
@@ -20,9 +19,7 @@ import {
 
 } from "@/components/ui/form";
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -30,9 +27,7 @@ const formSchema = z.object({
 })
 
 export default function Login() {
-    const [isSignIn , setisSignIn] = useState(true)
     const [error, setError] = useState("")
-    const dispatch = useDispatch()
     const navigate = useNavigate()
     const form = useForm({
         resolver: zodResolver(formSchema),
@@ -45,36 +40,34 @@ export default function Login() {
       await supabase.auth.signInWithOAuth({
           provider: 'google',
         })
-        //navigate("/")
     }
     
     async function onSubmit (formdata,event) {
       if (event.nativeEvent.submitter.name === 'login') {
         const response = await supabase.auth.signInWithPassword({
           email: formdata.email,
-          password: formdata.password
-        });
-        /*if (response.error) {
-          setisSignIn(false)
+          password: formdata.password,
+        });       
+        
+        if (response.error) {
           setError(response.error.message)
         }
         else{
-          dispatch(setAuth(true))
-          navigate("/")
-        }*/
+          navigate('/')
+        }
+      
       } else if (event.nativeEvent.submitter.name === 'signup') {
         const response = await supabase.auth.signUp({
           email: formdata.email,
           password: formdata.password
         })
-        /*if (response.error) {
-          setisSignIn(false)
+        if (response.error) {
           setError(response.error.message)
         }
         else{
-          dispatch(setAuth(true))
-          navigate("/")
-      }*/}}
+          navigate('/')
+        }}
+      } 
      
 
     return (
