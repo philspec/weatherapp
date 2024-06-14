@@ -81,7 +81,7 @@ const Login = () => {
   };
 
   return (
-    <div className="grid w-screen h-screen grid-cols-12 text-white bg-gradient-to-tl from-blue-950 via-blue-800 to-cyan-400">
+    <div className="grid w-screen grid-cols-12 text-white h-fit bg-gradient-to-tl from-blue-950 via-blue-800 to-cyan-400">
       <div className="grid col-span-6 grid-rows-12 place-items-center">
         <img src={logo} className="w-16 h-16 row-start-6 border rounded-2xl border-cyan-200" alt="logo" />
         <h1 className="row-start-7 text-2xl font-bold">Weather App</h1>
