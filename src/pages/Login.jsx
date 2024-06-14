@@ -28,6 +28,7 @@ const formSchema = z.object({
 
 export default function Login() {
     const [error, setError] = useState("")
+    const [isSignin, setIsSignin] = useState(true)
     const navigate = useNavigate()
     const form = useForm({
         resolver: zodResolver(formSchema),
@@ -68,6 +69,10 @@ export default function Login() {
           navigate('/')
         }}
       } 
+
+      function handleSignUp(){
+        setIsSignin(!isSignin)
+      }
      
 
     return (
@@ -110,9 +115,10 @@ export default function Login() {
                     </FormItem>
                 )}
                 />
-              <p className="col-span-6 mb-4 text-red-600 justify-self-center">{error}</p>
-            <Button name="login" className="col-span-3 col-start-1 border-blue-300 rounded-xl" type="submit">Login</Button>
-            <Button name="signup" className="col-span-3 col-start-4 border-blue-300 rounded-xl" type="submit">Sign Up</Button>
+              <p className="col-span-6 mb-1 text-red-600 justify-self-center">{error}</p>
+            {isSignin ? <Button name="login" className="col-span-4 col-start-2 border-blue-300 rounded-xl" type="submit">Login</Button> : <Button name="signup" className="col-span-4 col-start-2 border-blue-300 rounded-xl" type="submit">Sign Up</Button>}
+            <a onClick={handleSignUp} className="col-span-6 underline underline-offset-2 text-slate-300 justify-self-center">{isSignin ? "Don't have an account?":"Already have an account?" } </a >
+
             </form>
             </Form>
     </div>
