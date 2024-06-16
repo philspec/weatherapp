@@ -17,6 +17,7 @@ export default function Home() {
   console.log(fetchedForecastData);
 
   const placeSearch = async () => {
+    if (place !== "") {
     setError(null);
     setIsLoading(true);
     setFetchedPlaces([]);
@@ -38,7 +39,7 @@ export default function Home() {
       setError("Failed to fetch data");
     }
     setIsLoading(false);
-  };
+  }}
 
   const handleChange = (e) => {
     setPlace(e.target.value);
@@ -104,7 +105,7 @@ export default function Home() {
           Weatherapp
         </h1>
         <button
-          className="w-32 shadow-sm shadow-slate-400 h-12 m-1 m-auto col-span-2 col-start-11 text-center"
+          className="w-32  shadow-sm shadow-slate-400 h-12 m-1 m-auto col-span-2 col-start-11 text-center"
           onClick={handleClick}
         >
           Sign Out
@@ -116,13 +117,12 @@ export default function Home() {
           onKeyDown={handleKeyDown}
           type="text"
           value={place}
-          className="shadow-slate-300 w-[83%] mr-auto h-12 p-2 bg-gray-700 border-0 shadow-sm rounded-xl"
+          className="hover:border-cyan-800 border-2 shadow-slate-300 w-[83%] mr-auto h-12 p-2 bg-gray-700 border-0 shadow-sm rounded-xl"
           placeholder="Enter your city, press enter / click search and select the city from below"
         />
         <button
           onClick={handleSearch}
-          className="w-[15%] ml-auto h-12 p-2 bg-gradient-to-tl from-blue-900 via-blue-800 to-cyan-400 border-0 shadow-sm shadow-slate-400 rounded-xl"
-        >
+          className="w-[15%] h-12 p-2 ml-auto bg-gradient-to-tl from-blue-900 via-blue-800 to-cyan-400 border-0 shadow-sm shadow-slate-400 rounded-xl hover:border-cyan-800 border-2">
           Search
         </button>
       </div>
