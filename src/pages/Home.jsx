@@ -94,23 +94,23 @@ export default function Home() {
 
   return (
     <div className="w-screen min-h-screen bg-primary-foreground">
-      <nav className="sticky top-0 z-10 grid w-full h-16 grid-flow-row grid-cols-12 bg-primary-foreground">
+      <nav className="sticky top-0 mb-5 z-10 grid w-full h-16 grid-flow-row grid-cols-12 bg-primary-foreground">
         <img
           src={logo}
           className="w-16 h-16 col-start-1 border-0 rounded border-cyan-200"
           alt="logo"
         />
-        <h1 className="col-span-4 mt-auto col-start-5 text-[48px] font-bold text-center text-transparent bg-clip-text bg-gradient-to-tl from-blue-900 via-blue-800 to-cyan-400">
+        <h1 className="col-span-4 my-auto col-start-5 text-5xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-tl from-blue-900 via-blue-800 to-cyan-400">
           Weatherapp
         </h1>
         <button
-          className="w-[150px] shadow-sm shadow-slate-400 h-[50px] m-1 m-auto col-span-2 col-start-11 text-center"
+          className="w-32 shadow-sm shadow-slate-400 h-12 m-1 m-auto col-span-2 col-start-11 text-center"
           onClick={handleClick}
         >
           Sign Out
         </button>
       </nav>
-      <div className="mx-auto mt-5 w-[80%] flex flex-row justify-between">
+      <div className="mx-auto w-[80%] flex flex-row justify-between">
         <input
           onChange={handleChange}
           onKeyDown={handleKeyDown}
