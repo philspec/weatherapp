@@ -20,8 +20,8 @@ export const WeatherCard = (props) => {
       <br />
       <p className="text-yellow-400">{weather[0].description}</p>
       <p>{(main.temp - 273.15).toFixed(1)} °C</p>
-      <p>H: {main.humidity} %</p>
-      <p>{wind.speed} m/s</p>
+      <p>Hum: {main.humidity} %</p>
+      <p>Wind: {wind.speed} m/s</p>
       <p>Cloud: {clouds.all} %</p>
     </div>
   );
